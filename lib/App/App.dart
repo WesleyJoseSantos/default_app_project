@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
+import '../pages/splash.dart';
 
 //Import Pages
+import '../pages/test.dart';
 
 _App app = new _App();
 
@@ -15,6 +17,7 @@ class _App {
     runApp(_MyApp());
     data.load().then((onValue){
       data.appData = jsonDecode(onValue);
+      print(data.appData.toString());
     });
   }
 }
@@ -24,13 +27,14 @@ class _MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //home: start page,
+      home: app.pages.splash,
     );
   }
 }
 
 class _Pages {
-  //Instance pages
+  Splash splash = new Splash();
+  Test test = new Test();
 }
 
 class _AppData {
